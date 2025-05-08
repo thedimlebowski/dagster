@@ -77,7 +77,9 @@ def test_list_projects_aliases(alias: str):
 def test_list_components_success():
     with (
         ProxyRunner.test(use_fixed_test_components=True) as runner,
-        isolated_example_project_foo_bar(runner, in_workspace=False),
+        isolated_example_project_foo_bar(
+            runner, in_workspace=False, python_environment="uv_managed"
+        ),
     ):
         result = runner.invoke(
             "scaffold", "dagster_test.components.AllMetadataEmptyComponent", "qux"
@@ -574,7 +576,9 @@ def _sample_failed_defs():
 def test_list_env_succeeds():
     with (
         ProxyRunner.test(use_fixed_test_components=True) as runner,
-        isolated_example_project_foo_bar(runner, in_workspace=False),
+        isolated_example_project_foo_bar(
+            runner, in_workspace=False, python_environment="uv_managed"
+        ),
     ):
         result = runner.invoke("list", "env")
         assert_runner_result(result)
