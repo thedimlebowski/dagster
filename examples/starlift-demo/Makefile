@@ -13,6 +13,8 @@ export DBT_PROJECT_DIR := $(MAKEFILE_DIR)/dbt_example/shared/dbt
 export DBT_PROFILES_DIR := $(MAKEFILE_DIR)/dbt_example/shared/dbt
 export DAGSTER_URL := http://localhost:3333
 export AIRLIFT_MODULE_DIR := $(MAKEFILE_DIR)/../../python_modules/libraries/dagster-airlift
+export DBT_CLOUD_MODULE_DIR := $(MAKEFILE_DIR)/../experimental/libraries/dagster-dbt
+
 
 help:
 	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -22,6 +24,7 @@ dbt_setup: ## Initialize dbt project
 
 dev_install:
 	pip install uv && \
+	uv pip install -e $(DBT_CLOUD_MODULE_DIR) && \
 	uv pip install -e $(AIRLIFT_MODULE_DIR)[test]
 	uv pip install -e .
 
@@ -74,6 +77,9 @@ run_federated_airflow_defs_1:
 
 run_federated_airflow_defs_2:
 	dagster dev -m dbt_example.dagster_defs.federated_airflow_defs_2 -p 3333
+
+run_dbt_cloud_defs:
+	dagster dev -m dbt_example.dagster_defs.dbt_cloud_airflow -p 3333
 
 
 wipe: ## Wipe out all the files created by the Makefile
