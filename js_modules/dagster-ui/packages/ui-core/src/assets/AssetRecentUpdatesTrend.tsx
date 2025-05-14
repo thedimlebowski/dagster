@@ -35,7 +35,7 @@ export const AssetRecentUpdatesTrend = React.memo(({asset}: {asset: AssetHealthF
     loading,
     refetch,
   } = useRecentAssetEvents(
-    shouldQuery ? asset.assetKey : undefined,
+    shouldQuery ? asset.key : undefined,
     5,
     MaterializationHistoryEventTypeSelector.ALL,
   );
@@ -109,7 +109,7 @@ export const AssetRecentUpdatesTrend = React.memo(({asset}: {asset: AssetHealthF
           <div style={{height: 13, width: 1, background: Colors.keylineDefault()}} />
         </>
       )}
-      <AssetHealthSummary assetKey={asset.assetKey} iconOnly />
+      <AssetHealthSummary assetKey={asset.key} iconOnly />
     </Box>
   );
 });
