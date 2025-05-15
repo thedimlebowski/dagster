@@ -6,7 +6,7 @@ title: Customizing on_missing
 
 ### Ignoring dependencies
 
-By default, `AutomationCondition.on_missing()` will wait for all upstream dependencies to be materialized before executing the asset it's attached to.
+By default, <PyObject module="dagster" section="assets" object="AutomationCondition.on_missing" displayText="AutomationCondition.on_missing()" /> will wait for all upstream dependencies to be materialized before executing the asset it's attached to.
 
 In some cases, it can be useful to ignore some upstream dependencies in this calculation. This can be done by passing in an <PyObject section="assets" module="dagster" object="AssetSelection" /> to be ignored:
 

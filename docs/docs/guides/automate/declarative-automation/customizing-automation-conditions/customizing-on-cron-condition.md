@@ -6,7 +6,7 @@ title: Customizing on_cron
 
 ### Ignoring dependencies
 
-By default, `AutomationCondition.on_cron()` will wait for all upstream dependencies to be updated before executing the asset it's attached to. In some cases, it can be useful to ignore some upstream dependencies in this calculation. This can be done by passing in an <PyObject section="assets" module="dagster" object="AssetSelection" /> to be ignored:
+By default, <PyObject module="dagster" section="assets" object="AutomationCondition.on_cron displayText="AutomationCondition.on_cron()" /> will wait for all upstream dependencies to be updated before executing the asset it's attached to. In some cases, it can be useful to ignore some upstream dependencies in this calculation. This can be done by passing in an <PyObject section="assets" module="dagster" object="AssetSelection" /> to be ignored:
 
 <CodeExample path="docs_snippets/docs_snippets/concepts/declarative_automation/on_cron/ignore_dependencies.py" />
 

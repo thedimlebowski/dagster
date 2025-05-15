@@ -6,7 +6,7 @@ title: Customizing eager
 
 ### Ignoring missing upstream data
 
-By default, `AutomationCondition.eager()` will not materialize a target if it has any missing upstream data.
+By default, <PyObject module="dagster" section="assets" object="AutomationCondition.eager" displayText="AutomationCondition.eager()" /> will not materialize a target if it has any missing upstream data.
 
 If it is expected to have missing upstream data, remove `~AutomationCondition.any_deps_missing()` from the eager policy to allow execution:
 
